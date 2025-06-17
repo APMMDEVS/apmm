@@ -101,6 +101,10 @@ class ApMcp(FastMCP,metaclass=ApmcpMeta):
             return "Hello, APMCP!"
 
         return mcp
+    
+
+
+
 
 def __getattr__(item: str):
         """
@@ -110,6 +114,8 @@ def __getattr__(item: str):
             return ApMcp.getMcp()
         raise AttributeError(f"寄！")
 
+
+
 from click import option, group
 
 @group()
@@ -117,8 +123,8 @@ def cli():
     pass
 
 @cli.command()
-@option('--host', default='localhost', help='MCP server host')
-@option('--port', default=10240, help='MCP server port')
+@option('--host', "-h" , default='localhost', help='MCP server host')
+@option('--port', "-p", default=10240, help='MCP server port')
 def stdio(host: str, port: int):
     """
     以stdio方式运行MCP服务器
@@ -126,15 +132,13 @@ def stdio(host: str, port: int):
     ApMcp.stdio()
 
 @cli.command()
-@option('--host', default='localhost', help='MCP server host')
-@option('--port', default=10240, help='MCP server port')
+@option('--host', "-h" , default='localhost', help='MCP server host')
+@option('--port', "-p", default=10240, help='MCP server port')
 def sse(host: str, port: int):
     """
     以SSE方式运行MCP服务器
     """
     ApMcp.sse(host=host, port=port)
-
-
 
 
 
