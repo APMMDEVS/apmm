@@ -9,11 +9,7 @@ authors = [
 requires-python = ">=3.13"
 dependencies = []
 
-[project.scripts]
-apmm = "apmm.apmmcore:cli"
-apmcp = "apmm.apmcp:cli"
-
-[project.optional-dependencies]
+[dependency-groups]
 # PC端需使用 uv tool install apmm[pc]来使用全部功能
 # 同时允许安卓端安装使用
 pc = [
@@ -22,6 +18,10 @@ pc = [
     "pygithub>=2.6.1",
     "toml>=0.10.2",
 ]
+
+[project.scripts]
+apmm = "apmm.apmmcore:cli"
+apmcp = "apmm.apmcp:cli"
 
 [build-system]
 requires = ["maturin>=1.0,<2.0"]

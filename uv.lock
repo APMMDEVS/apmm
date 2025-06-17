@@ -28,7 +28,7 @@ wheels = [
 name = "apmm"
 source = { editable = "." }
 
-[package.optional-dependencies]
+[package.dev-dependencies]
 pc = [
     { name = "httpx" },
     { name = "mcp", extra = ["cli"] },
@@ -37,13 +37,14 @@ pc = [
 ]
 
 [package.metadata]
-requires-dist = [
-    { name = "httpx", marker = "extra == 'pc'", specifier = ">=0.28.1" },
-    { name = "mcp", extras = ["cli"], marker = "extra == 'pc'", specifier = ">=1.9.4" },
-    { name = "pygithub", marker = "extra == 'pc'", specifier = ">=2.6.1" },
-    { name = "toml", marker = "extra == 'pc'", specifier = ">=0.10.2" },
+
+[package.metadata.requires-dev]
+pc = [
+    { name = "httpx", specifier = ">=0.28.1" },
+    { name = "mcp", extras = ["cli"], specifier = ">=1.9.4" },
+    { name = "pygithub", specifier = ">=2.6.1" },
+    { name = "toml", specifier = ">=0.10.2" },
 ]
-provides-extras = ["pc"]
 
 [[package]]
 name = "certifi"

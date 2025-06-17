@@ -27,7 +27,7 @@ apd module install apmm.zip
 # 开发
 
 ```uv
-uv sync # 确保环境一致
+uv sync --group pc # 确保环境一致
 uv pip install -e .[pc] 
 ```
 
