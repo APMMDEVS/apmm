@@ -1,0 +1,44 @@
+[project]
+name = "apmm"
+dynamic = ["version"]
+description = "Android Patch Module Manager"
+readme = "README.md"
+authors = [
+    { name = "LIghtJUNction", email = "LIghtJUNction.me@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+apmm = "apmm.apmmcore:cli"
+apmcp = "apmm.apmcp:cli"
+
+[project.optional-dependencies]
+# PC端需使用 uv tool install apmm[pc]来使用全部功能
+# 同时允许安卓端安装使用
+pc = [
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.9.4",
+    "pygithub>=2.6.1",
+    "toml>=0.10.2",
+]
+
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+[tool.maturin]
+bindings = "pyo3"
+manifest-path = "rust/apmm/Cargo.toml"
+python-source = "src"
+module-name = "apmm.apmmcore"
+strip = true
+include = [
+    { path = "README.md", format = "sdist" },
+    { path = "LICENSE", format = "sdist" },
+    { path = "CHANGELOG.md",  format = "sdist" }
+]
+
+[tool.uv]
+package = true
+managed = true
+
