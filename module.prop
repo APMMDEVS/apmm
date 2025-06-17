@@ -1,17 +1,25 @@
 id = apmm
-name = APMM
+name = APMM # 默认一致，可以手动修改
 description = APMM (Android Patch Module Manager) 
-version = 0.1.0
+version = v0.1.0
 versionCode = 2025061700
 author = APMM Team
 license = MIT
-# updateJson
+updateJson = "https://raw.githubusercontent.com/APMMDEVS/apmm/main/update.json"
 
 [script]
 # hello = "echo 'world'"
 
 [build]
 # 全局build配置
+[build.module]
+# extra = ["Path/to/extra/file1", "Path/to/extra/file2"]
+exclude = ["src", "rust", ".*" , "uv.lock" , "dist" , "build" ]
+
+[build.src]
+# extra = ["src/extra1", "src/extra2"]
+exclude = ["src", "rust", ".*" , "uv.lock" , "dist" , "build"  ]
+
 
 [[build.prebuild]]
 step1 = "echo 'Prebuild step 1: Initializing APMM'"
@@ -20,11 +28,17 @@ step2 = "echo 'Prebuild step 2: Checking dependencies'"
 
 [[build.build]]
 # 留空以使用apmm默认打包 如果允许完全自定义
+# 默认流程是压缩/build/module/*
+# 并复制一份到/build/dist/*
 
 [[build.postbuild]]
 step1 = "echo 'Postbuild step 1: cleaning up APMM build'"
 [[build.postbuild]]
 step2 = "echo 'Postbuild step 2: Finalizing APMM build'"
+
+[build.system]
+requires = ["apmm>=0.3.0"]
+build-backend = "apmm"
 
 [github]
 # repo = ""

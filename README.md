@@ -34,9 +34,17 @@ uv pip install -e .[pc]
 > 在项目根目录执行
 
 `uv tool install -e .[pc]`
+apmm (cli入口)
+
+> 第二个入口点(方便交叉编译让安卓端使用）
+
+```code
+cd rust
+cargo r 或者 cargo run
+```
 
 > 配置mcp服务器：
-> 使用 apmcp (-h / --help) 查看帮助 
+> 使用 apmcp (-h / --help) 查看帮助
 
 ```apmcp
 "apmcp ": {
@@ -51,7 +59,8 @@ uv pip install -e .[pc]
 ```
 
 > apmcp 开发
-``` mcp
+
+```mcp
 uv add "mcp[cli]" httpx
 cd ...\apmm\src\apmm
 mcp dev apmcp.py
@@ -66,8 +75,6 @@ uv build # 这个也行
 uv tool install -e .[pc] --force # 碰到问题试试这个
 
 ```
-
-
 
 # apmm拓展配置
 
