@@ -36,12 +36,15 @@ uv pip install -e .[pc]
 `uv tool install -e .[pc]`
 
 > 配置mcp服务器：
-> 仅需命令即可，无需args . 默认stdio 可以额外指定为sse 使用 apmcp -h / --help 查看帮助
+> 使用 apmcp (-h / --help) 查看帮助 
 
 ```apmcp
 "apmcp ": {
     "type": "stdio",
     "command": "apmcp"
+    "args": [
+        "stdio" # 或者sse
+    ],
 },
 
 
