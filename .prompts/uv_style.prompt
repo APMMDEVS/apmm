@@ -1,0 +1,49 @@
+PS C:\Users\light\Documents\GitHub\apmm> uv sync            
+Resolved 41 packages in 1ms
+Uninstalled 41 packages in 399ms
+Installed 1 package in 16ms
+ - annotated-types==0.7.0
+ - anyio==4.9.0
+ - apmm==0.1.0 (from file:///C:/Users/light/Documents/GitHub/apmm/rust/apmm)
+ + apmm==0.1.0 (from file:///C:/Users/light/Documents/GitHub/apmm)
+ - certifi==2025.6.15
+ - cffi==1.17.1
+ - charset-normalizer==3.4.2
+ - click==8.2.1
+ - colorama==0.4.6
+ - cryptography==45.0.4
+ - deprecated==1.2.18
+ - h11==0.16.0
+ - httpcore==1.0.9
+ - httpx==0.28.1
+ - httpx-sse==0.4.0
+ - idna==3.10
+ - markdown-it-py==3.0.0
+ - mcp==1.9.4
+ - mdurl==0.1.2
+ - pycparser==2.22
+ - pydantic==2.11.7
+ - pydantic-core==2.33.2
+ - pydantic-settings==2.9.1
+ - pygithub==2.6.1
+ - pygments==2.19.1
+ - pyjwt==2.10.1
+ - pynacl==1.5.0
+ - python-dotenv==1.1.0
+ - python-multipart==0.0.20
+ - requests==2.32.4
+ - rich==14.0.0
+ - shellingham==1.5.4
+ - sniffio==1.3.1
+ - sse-starlette==2.3.6
+ - starlette==0.47.0
+ - toml==0.10.2
+ - typer==0.16.0
+ - typing-extensions==4.14.0
+ - typing-inspection==0.4.1
+ - urllib3==2.4.0
+ - uvicorn==0.34.3
+ - wrapt==1.17.2
+PS C:\Users\light\Documents\GitHub\apmm> 
+
+如上所示，请你修改输出风格为uv 风格，前面的符号需要有颜色

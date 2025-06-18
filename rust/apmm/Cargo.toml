@@ -12,11 +12,21 @@ name = "apmm"
 path = "src/main.rs"
 
 [dependencies]
-pyo3 = { version = "0.23", features = ["abi3-py38"] }
+pyo3 = { version = "0.25.1", features = ["abi3-py313"] }
 chrono = { version = "0.4", features = ["serde"] }
 serde = { version = "1.0", features = ["derive"] }
 toml = "0.8"
-zip = "2.2"
+zip = "4.1.0"
 flate2 = "1.0"
 tar = "0.4"
+colored = "3.0.0"
 
+[profile.release]
+lto = true
+strip = true      
+opt-level = 3
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+panic = "unwind"

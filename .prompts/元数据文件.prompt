@@ -1,0 +1,11 @@
+# 环境变量APMM_ROOT
+# 用于指定APMM的根目录
+# 如果未设置，将使用默认：~/data/adb/.apmm/meta.toml
+大致内容如下：
+
+username = ""
+email = ""
+
+[projects]
+test = 'C:\Users\light\Documents\GitHub\apmm\test'
+

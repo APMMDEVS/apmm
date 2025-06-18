@@ -1,0 +1,35 @@
+这是一个pyo3绑定的python+rust混合项目
+# 请使用maturin develop 来部署
+
+# 该项目使用uv风格的输出！
+# 入口点：
+apmm = "apmm.apmmcore:cli"
+这个是由pyproject定义的第一个入口
+设计为在电脑端使用
+
+[[bin]]
+name = "apmm"
+path = "src/main.rs"
+
+这个是二进制入口点，方便交叉编译给android运行
+功能与刚刚的入口点一致，共享命令：cmds.rs
+
+apmcp = "apmm.apmcp:cli"
+这个是纯python的入口点，电脑端使用，目的提供一个mcp服务器
+尚在开发中
+
+# 重点
+rust/代码结构设计
+rust/apmm/Cargo.toml
+
+rust/apmm/src/lib.rs # apmm的入口
+rust/apmm/src/main.rs # apmm的二进制入口
+rust/apmm/src/cmds.rs # 两者共享命令
+
+rust/apmm/src/init/* # 初始化模块命令
+特别注意：
+init/filename.rs # 这个是初始化某个文件的生成器，仅负责生成一个文件。
+
+其他命令：
+src/cmd_name/mod.rs # 拓展其他命令的方法
+

@@ -13,3 +13,8 @@ classifiers = [
 dynamic = ["version"]
 [tool.maturin]
 features = ["pyo3/extension-module"]
+
+[tool.uv.workspace]
+members = [
+    "src/init/UV",
+]

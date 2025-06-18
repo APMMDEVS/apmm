@@ -5,6 +5,11 @@ use std::env;
 use std::process::Command;
 use std::io::Write;
 
+// 导入新的模块
+use crate::env::cmd_env;
+use crate::init::cmd_init;
+use crate::sync::cmd_sync;
+
 /// 构建步骤
 #[derive(Debug, Clone)]
 pub struct BuildStep {
@@ -140,7 +145,15 @@ pub fn show_help() {
     println!("Usage: apmm <command> [options]");
     println!();
     println!("Commands:");
-    println!("  build        Build the module");
+    println!("  env          Manage environment configuration");
+    println!("    env                    Show all environment info");
+    println!("    env <var>              Show specific variable");
+    println!("    env <var> <value>      Set variable value");    println!("  init         Initialize APMM project");
+    println!("    init <path>            Initialize project at path");
+    println!("    init .                 Initialize in current directory");    println!("  sync         Synchronize all projects metadata");
+    println!("    sync                   Full sync: scan, validate, add/remove projects");
+    println!("    sync -U                Sync current project and upgrade version");
+    println!("  build        Build the module packages");
     println!("  install      Install the module");
     println!("  remove       Remove the module");
     println!("  info         Show module information");
@@ -159,8 +172,8 @@ pub fn show_version() {
     println!("License: MIT");
 }
 
-/// 构建命令
-pub fn cmd_build() -> Result<String, String> {
+/// 构建命令（旧版本，保持兼容性）
+pub fn cmd_build_legacy() -> Result<String, String> {
     println!("🔨 Building APMM module...");
     
     let config = ApmmConfig::load()?;
@@ -246,9 +259,16 @@ pub fn handle_command(args: &[String]) -> Result<(), String> {
         return Ok(());
     }
     
-    match args[0].as_str() {
-        "build" => {
-            cmd_build()?;
+    match args[0].as_str() {        "env" => {
+            cmd_env(&args[1..])?;
+        },
+        "init" => {
+            cmd_init(&args[1..])?;
+        },
+        "sync" => {
+            cmd_sync(&args[1..])?;
+        },        "build" => {
+            crate::build::cmd_build(&args[1..])?;
         },
         "install" => {
             cmd_install()?;

@@ -1,0 +1,22 @@
+标准build流程：
+# 构建moduleID-versionCode.zip
+# 构建前准备阶段
+解析[build.module] exclude / extra 配置
+将文件复制到/.ammp/build/module/
+# 执行prebuild脚本
+# 执行build脚本 （如果定义，表示使用自定义流程）
+默认build流程是将/.ammp/build/module/目录下的文件压缩成一个zip包到/.ammp/build/dist/*
+同时将/.ammp/build/module/update.json 复制到/.ammp/build/dist/update.json
+
+# 执行postbuild脚本
+
+# 构建moduleID-versionCode.tar.gz
+# 构建前准备阶段
+# 解析[build.src] exclude / extra 配置
+# 将文件复制到/.ammp/build/src/
+# 无需执行 prebuild 脚本
+# 不支持自定义build流程
+直接将/.ammp/build/src/目录下的文件压缩成一个tar.gz包到/.ammp/build/dist/*
+# 无需执行 postbuild 脚本
+
+流程结束
